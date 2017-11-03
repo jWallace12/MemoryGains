@@ -1,35 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="a2.csci412.wwu.edu.memorygain.MainActivity">
-
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="a2.csci412.wwu.edu.memorygain.MainActivity"
+    android:weightSum="12">
 
     <TextView
-
+        android:id="@+id/message"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:text="@string/message"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="40dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/recallText"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="9dp" />
+
+    <TextView
+        android:id="@+id/recallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mainHeading"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_weight="2"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/goToPhraseRecall"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintLeft_toLeftOf="@+id/goToPhraseRecall" />
+
     <Button
         android:id="@+id/goToPhraseRecall"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
-    <Button
-        android:id="@+id/goToImageRecall"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
+        android:layout_marginBottom="24dp"
+        android:layout_weight="1"
+        android:onClick="goToPhraseRecall"
+        android:text="@string/phraseButton"
+        app:layout_constraintBottom_toTopOf="@+id/goToLocationRecall"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
     <Button
         android:id="@+id/goToLocationRecall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_weight="1"
+        android:onClick="goToLocationRecall"
+        android:text="@string/locationButton"
+        app:layout_constraintBottom_toTopOf="@+id/goToImageRecall"
+        app:layout_constraintLeft_toLeftOf="@+id/goToPhraseRecall"
+        app:layout_constraintRight_toRightOf="@+id/goToPhraseRecall"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <Button
+        android:id="@+id/goToImageRecall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_weight="1"
+        android:onClick="goToImageRecall"
+        android:text="@string/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/goToStats"
+        app:layout_constraintLeft_toLeftOf="@+id/goToLocationRecall"
+        app:layout_constraintRight_toRightOf="@+id/goToLocationRecall"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
     <Button
         android:id="@+id/goToStats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_weight="1"
+        android:onClick="goToStatistics"
+        android:text="@string/statsButton"
+        app:layout_constraintBottom_toTopOf="@+id/goToSettings"
+        app:layout_constraintLeft_toLeftOf="@+id/goToImageRecall"
+        app:layout_constraintRight_toRightOf="@+id/goToImageRecall"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
     <Button
         android:id="@+id/goToSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:layout_weight="1"
+        android:onClick="goToSettings"
+        android:text="@string/settingsButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

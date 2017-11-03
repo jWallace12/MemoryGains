@@ -16,6 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ImageRecall">
+        </activity>
+        <activity
+            android:name=".LocationRecall">
+        </activity>
+        <activity
+            android:name=".PhraseRecall">
+        </activity>
+        <activity
+            android:name=".Settings">
+        </activity>
+        <activity
+            android:name=".Statistics">
+        </activity>
     </application>
 
 </manifest>

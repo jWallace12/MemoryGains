@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Memory Gain</string>
-    <string name="mainHeadding">Recall Something!</string>
+    <string name="mainHeading">Recall Something!</string>
+    <string name="message">Your memory is good</string>
     <string name="phraseButton">Phrase Recall</string>
     <string name="imageButton">Image Recall</string>
     <string name="locationButton">Location Recall</string>
-    <string name="statsButton">Recall Stats</string>
-    <string name="settingsButton">Go To Settings</string>
-</resources>
+    <string name="statsButton">My Statistics</string>
+    <string name="settingsButton">Settings</string>
+    <string name="notifications">Notifications</string>
+    <string name="locationServices">Location Services</string>
 
+</resources>
