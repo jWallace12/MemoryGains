@@ -6,8 +6,8 @@ package a2.csci412.wwu.edu.memorygain;
 
 public class Recall {
     private int id;
-    private String type;
-    private String pass;
+    private String type; //i.e location, phrase, photo
+    private String pass; // fail or pass
 
     public Recall(int id, String type, String pass) {
         this.id = id;

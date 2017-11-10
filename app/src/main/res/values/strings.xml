@@ -1,4 +1,5 @@
 <resources>
+    <!--Main page-->
     <string name="app_name">Memory Gain</string>
     <string name="mainHeading">Recall Something!</string>
     <string name="message">Your memory is good</string>
@@ -7,7 +8,22 @@
     <string name="locationButton">Location Recall</string>
     <string name="statsButton">My Statistics</string>
     <string name="settingsButton">Settings</string>
+
+    <!--Phrase recall-->
+    <string name="phraseTitleText">Phrase Recall</string>
+    <string name="directions">Directions: Remember this phrase. At random, you will receive a notification,
+            prompting you to enter the phrase.</string>
+    <string name="accept">Accept Phrase</string>
+    <string name="newPhrs">New Phrase</string>
+
+    <!--Settings-->
+    <string name="enableVib">Enable Vibration</string>
     <string name="notifications">Notifications</string>
     <string name="locationServices">Location Services</string>
+    <string name="clearCache">Clear Local Cache</string>
+    <string name="reset">Reset Statistics</string>
+    <string name="enabNotif">Enable Notifications</string>
+    <string name="enabGPS">Enable GPS Tracking</string>
+    <string name="mainPage">Main Page</string>
 
 </resources>

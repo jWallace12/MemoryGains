@@ -20,6 +20,8 @@ public class Statistics extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         dbManager = new DatabaseManager(this);
         setContentView(R.layout.activity_statistics);
+
+        updateView();
     }
 
     // update statistics
