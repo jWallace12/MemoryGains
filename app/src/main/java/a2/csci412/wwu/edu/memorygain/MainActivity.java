@@ -5,15 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
-    private DatabaseManager dbManager;
-    private int phraseTimer = 0;
+    public class MainActivity extends AppCompatActivity {
+
+    private int phraseTimer = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbManager= new DatabaseManager( this );
     }
 
     protected void onResume( ) {
@@ -21,8 +20,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToPhraseRecall( View v ) {
-        Intent myIntent = new Intent( this, PhraseRecall.class );
-        this.startActivity(myIntent);
+        if (phraseTimer == 0){
+            Intent myIntent = new Intent(this,PhraseRecall.class );
+            this.startActivity(myIntent);
+        } else {
+            Intent myIntent = new Intent(this,PhraseGuess.class );
+            this.startActivity(myIntent);
+        }
+
     }
 
     public void goToLocationRecall( View v ) {

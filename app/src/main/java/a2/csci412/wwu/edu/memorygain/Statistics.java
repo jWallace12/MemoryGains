@@ -44,14 +44,14 @@ public class Statistics extends AppCompatActivity{
         // track successes for all recalls
 
         for (Recall recall : locationRecalls) {
-            if (recall.getPass().equals("1")) {
+            if (recall.getPass().equals("pass")) {
                 locationSuccess++;
                 overallSuccess++;
             }
         }
 
         for (Recall recall : phraseRecalls) {
-            if (recall.getPass().equals("1")) {
+            if (recall.getPass().equals("pass")) {
                 phraseSuccess++;
                 overallSuccess++;
             }

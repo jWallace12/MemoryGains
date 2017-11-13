@@ -27,13 +27,14 @@ public class PhraseRecall extends AppCompatActivity{
                 "You don't know what you are saying", "Remembering is fun!", "I could never forget", "I'll never forget you",
                 "You are the light of my life", "I am very proud of you", "Where there is smoke there is fire", "I love you",
                 "You don't even know the half of it", "I forgive you", "Everything will be just fine", "Take my hand",
-                "Run as fast as you can", "I believe in you", "Don't worry about it", "I knew that", "It's the end of the world"};
+                "Run as fast as you can", "I believe in you", "Don't worry about it", "I knew that", "It's the end of the world",
+                "Dont be afraid", "Never say never", "It's a diamond in the rough", "You're a one in a million", "The odds are against us"};
     }
 
     public void newPhrase(View v) {
         //get random phrase
         Random generator = new Random();
-        givenPhrase.setText(phraseList[generator.nextInt(24)]);
+        givenPhrase.setText(phraseList[generator.nextInt(phraseList.length-1)]);
     }
 
     public void acceptPhrase(View v) {

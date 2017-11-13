@@ -25,10 +25,10 @@
         android:id="@+id/locationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="73dp"
         android:text="Location Recall Success: "
         app:layout_constraintBaseline_toBaselineOf="@+id/locationStats"
-        app:layout_constraintEnd_toStartOf="@+id/locationStats"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
@@ -48,8 +48,9 @@
         android:id="@+id/phraseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="194dp"
         android:text="Phrase Recall Success: "
-        app:layout_constraintBaseline_toBaselineOf="@+id/phraseStats"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/locationView" />
 
     <TextView
@@ -64,17 +65,17 @@
         android:id="@+id/locationStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/phraseView"
         app:layout_constraintEnd_toStartOf="@+id/phraseStats"
-        app:layout_constraintStart_toStartOf="@+id/phraseStats"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/phraseStats" />
 
     <TextView
         android:id="@+id/phraseStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="32dp"
         android:text=""
         app:layout_constraintEnd_toStartOf="@+id/overallStats"
         app:layout_constraintStart_toStartOf="@+id/overallStats"
@@ -84,11 +85,9 @@
         android:id="@+id/overallStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="128dp"
-        android:layout_marginStart="128dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="34dp"
         android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/button8"
+        app:layout_constraintStart_toEndOf="@+id/overallView"
         app:layout_constraintTop_toBottomOf="@+id/phraseStats" />
 </android.support.constraint.ConstraintLayout>
