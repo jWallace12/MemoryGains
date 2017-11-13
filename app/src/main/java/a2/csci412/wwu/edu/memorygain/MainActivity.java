@@ -1,13 +1,13 @@
 package a2.csci412.wwu.edu.memorygain;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseManager dbManager;
+    private int phraseTimer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
     public void goToSettings( View v ) {
         Intent myIntent = new Intent(this, Settings.class);
         this.startActivity(myIntent);
+    }
+
+    public void phraseTimer() {
+
     }
 }
