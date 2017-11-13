@@ -40,7 +40,7 @@
         tools:layout_constraintTop_creator="1" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/takeLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Snapshot Location"
@@ -50,7 +50,8 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="60dp"
         app:layout_constraintLeft_toLeftOf="@+id/textView5"
-        android:layout_marginLeft="2dp" />
+        android:layout_marginLeft="2dp"
+        android:onClick="recordLocation"/>
 
     <Button
         android:id="@+id/button4"
