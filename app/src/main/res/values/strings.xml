@@ -16,6 +16,9 @@
     <string name="accept">Accept Phrase</string>
     <string name="newPhrs">New Phrase</string>
 
+    <!--Phrase Guess-->
+    <string name="phraseGuess">Guess That Phrase!</string>
+
     <!--Settings-->
     <string name="enableVib">Enable Vibration</string>
     <string name="notifications">Notifications</string>
@@ -26,5 +29,11 @@
     <string name="enabGPS">Enable GPS Tracking</string>
     <string name="mainPage">Main Page</string>
     <string name="title_activity_maps">Map</string>
+
+    <!--Location Guess-->
+    <string name="guessLocation">Guess That Location!</string>
+
+    <!--Various-->
+    <string name="guess">Guess!</string>
 
 </resources>

@@ -10,6 +10,9 @@ import android.view.View;
  */
 
 public class LocationRecall extends AppCompatActivity{
+
+    private static String location;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
