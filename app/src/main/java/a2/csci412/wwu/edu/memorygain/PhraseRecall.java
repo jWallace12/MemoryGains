@@ -26,8 +26,10 @@ public class PhraseRecall extends AppCompatActivity{
 
         // retrieve the saved wor
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        currentPhrase = sharedPreferences.getString("phrase", "");
+        currentPhrase = sharedPreferences.getString("phrase", "Default");
         givenPhrase = (TextView) findViewById(R.id.givenPhraseText);
+        TextView testing = (TextView) findViewById(R.id.tester);
+        testing.setText(currentPhrase);
 
         // load available phrases
         phraseList = new String[] {"hello there", "Don't forget me", "Today is the best day", "Find out for yourself",
@@ -38,6 +40,7 @@ public class PhraseRecall extends AppCompatActivity{
                 "Run as fast as you can", "I believe in you", "Don't worry about it", "I knew that", "It's the end of the world",
                 "Dont be afraid", "Never say never", "It's a diamond in the rough", "You're a one in a million", "The odds are against us"};
     }
+
 
     public void newPhrase(View v) {
         //get random phrase
@@ -54,18 +57,27 @@ public class PhraseRecall extends AppCompatActivity{
 
     // accept new phrase
     public void acceptPhrase(View v) {
+
+        // retrieve the phrase, and then save it into SharedPreferences
         currentPhrase = givenPhrase.getText().toString();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("phrase", currentPhrase);
         editor.commit();
+
+        // tell main activity that a new timer is being created, and
+        // return to main activity
+        MainActivity.setPhraseTimer();
+        goBack();
     }
 
     public static String getCurrentPhrase() {
         return currentPhrase;
     }
 
-
-    public void goBack( View v ) {
+    // finish activity
+    public void goBack() {
         this.finish( );
     }
+
+
 }

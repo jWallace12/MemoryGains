@@ -4,52 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context="a2.csci412.wwu.edu.memorygain.MainActivity"
-    android:weightSum="12">
+    android:orientation="vertical"
+    android:weightSum="12"
+    tools:context="a2.csci412.wwu.edu.memorygain.MainActivity">
 
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textAlignment="center"
-        android:text="@string/message"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
         android:layout_marginTop="40dp"
-        tools:layout_constraintLeft_creator="1"
+        android:text="@string/message"
+        android:textAlignment="center"
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="@+id/recallText"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="9dp" />
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/recallText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mainHeading"
+        android:layout_marginBottom="24dp"
+        android:layout_weight="2"
         android:gravity="center"
+        android:text="@string/mainHeading"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:layout_weight="2"
-        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/goToPhraseRecall"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintLeft_toLeftOf="@+id/goToPhraseRecall" />
+        app:layout_constraintLeft_toLeftOf="@+id/goToPhraseRecall"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 
     <Button
         android:id="@+id/goToPhraseRecall"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:layout_marginEnd="112dp"
         android:layout_weight="1"
         android:onClick="goToPhraseRecall"
         android:text="@string/phraseButton"
         app:layout_constraintBottom_toTopOf="@+id/goToLocationRecall"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button2"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1" />
@@ -113,5 +113,6 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1" />
+
 
 </android.support.constraint.ConstraintLayout>
