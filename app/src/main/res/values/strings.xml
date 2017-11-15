@@ -3,9 +3,12 @@
     <string name="app_name">Memory Gain</string>
     <string name="mainHeading">Recall Something!</string>
     <string name="message">Your memory is good</string>
-    <string name="phraseButton">Phrase Recall</string>
-    <string name="imageButton">Image Recall</string>
-    <string name="locationButton">Location Recall</string>
+    <string name="phraseButton">New Phrase</string>
+    <string name="goToPhraseGuess">Phrase Recall</string>
+    <string name="imageButton">New Image</string>
+    <string name="goToGuessImage">Image Recall</string>
+    <string name="locationButton">New Location</string>
+    <string name="goToLocationGuess">Location Recall</string>
     <string name="statsButton">My Statistics</string>
     <string name="settingsButton">Settings</string>
 

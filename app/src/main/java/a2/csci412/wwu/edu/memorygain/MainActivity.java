@@ -8,16 +8,22 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private static boolean phraseTimer;
-    private boolean locationTimer;
+    private static boolean locationTimer;
+    private static boolean phraseGuessReady;
+    private static boolean locationGuessReady;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         phraseTimer = false;
+        locationTimer = false;
+        phraseGuessReady = false;
+        locationGuessReady = false;
         setContentView(R.layout.activity_main);
     }
 
@@ -28,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         if (phraseTimer) {
             setPhraseTimer(10000);
             phraseTimer = false;
+        } else if (locationTimer) {
+            setLocationTimer(10000);
+            locationTimer = false;
         }
     }
 
@@ -36,9 +45,29 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
+    public void goToPhraseGuess( View v ) {
+        if (phraseGuessReady) {
+            phraseGuessReady = false;
+            Intent myIntent = new Intent(this, PhraseGuess.class);
+            this.startActivity(myIntent);
+        } else {
+            Toast.makeText(this, "It is not time yet to guess a phrase.", Toast.LENGTH_SHORT);
+        }
+    }
+
     public void goToLocationRecall( View v ) {
         Intent myIntent = new Intent(this, LocationRecall.class);
         this.startActivity(myIntent);
+    }
+
+    public void goToLocationGuess( View v ) {
+        if (locationGuessReady) {
+            locationGuessReady = false;
+            Intent myIntent = new Intent(this, LocationGuess.class);
+            this.startActivity(myIntent);
+        } else {
+            Toast.makeText(this, "It is not time yet to guess a location.", Toast.LENGTH_SHORT);
+        }
     }
 
     public void goToImageRecall( View v ) {
@@ -56,15 +85,25 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
-    public void setPhraseTimer(int num) {
+    // set up timer for notification to
+    public void setPhraseTimer(int time) {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        Intent myIntent = new Intent(MainActivity.this, AlarmNotificationReceiver.class);
+        Intent myIntent = new Intent(MainActivity.this, PhraseAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+num, pendingIntent);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + time, pendingIntent);
     }
 
-    public static void setPhraseTimer() {
+    public void setLocationTimer(int time) {
+        AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent myIntent = new Intent(MainActivity.this, LocationAlarmNotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + time, pendingIntent);
+    }
+
+    public static void setPhraseBoolean() {
         phraseTimer = true;
     }
+
+    public static void setLocationBoolean() { locationTimer = true; }
 
 }

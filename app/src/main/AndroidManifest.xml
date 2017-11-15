@@ -47,7 +47,7 @@
             android:label="@string/title_activity_maps">
 
         </activity>
-        <receiver android:name=".AlarmNotificationReceiver">
+        <receiver android:name=".PhraseAlarmNotificationReceiver">
 
         </receiver>
     </application>

@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationCompat;
  * Created by Jonah on 11/14/2017.
  */
 
-public class AlarmNotificationReceiver extends BroadcastReceiver {
+public class PhraseAlarmNotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
@@ -20,8 +20,8 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Active alarm")
-                .setContentText("I am testing!")
+                .setContentTitle("Phrase Alarm")
+                .setContentText("It's time to recall your phrase")
                 .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
                 .setContentInfo("info");
 

@@ -58,6 +58,9 @@ public class PhraseRecall extends AppCompatActivity{
     // accept new phrase
     public void acceptPhrase(View v) {
 
+        // delete old phrase
+        resetPhrase();
+
         // retrieve the phrase, and then save it into SharedPreferences
         currentPhrase = givenPhrase.getText().toString();
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -66,7 +69,7 @@ public class PhraseRecall extends AppCompatActivity{
 
         // tell main activity that a new timer is being created, and
         // return to main activity
-        MainActivity.setPhraseTimer();
+        MainActivity.setPhraseBoolean();
         goBack();
     }
 
