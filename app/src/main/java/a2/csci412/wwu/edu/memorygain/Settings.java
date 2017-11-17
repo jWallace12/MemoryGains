@@ -37,20 +37,29 @@ public class Settings extends AppCompatActivity{
                             MainActivity.setNotification(true);
                             Toast.makeText( Settings.this, "Notifications on", Toast.LENGTH_SHORT ).show( );
                         } else {
+                            MainActivity.setNotification(false);
                             Toast.makeText( Settings.this, "Notifications off", Toast.LENGTH_SHORT ).show( );
                         }
-
-                        // Do something
                         break;
                     case R.id.vibrateSwitch:
                         Log.w("listener", "vibe");
-                        Toast.makeText( Settings.this, "Vibrate ", Toast.LENGTH_SHORT ).show( );
-                        // Do something
+                        if (notifSwitch.isChecked()) {
+                            MainActivity.setVibration(true);
+                            Toast.makeText( Settings.this, "Vibrate on", Toast.LENGTH_SHORT ).show( );
+                        } else {
+                            MainActivity.setVibration(false);
+                            Toast.makeText( Settings.this, "Vibrate off", Toast.LENGTH_SHORT ).show( );
+                        }
                         break;
                     case R.id.locationSwitch:
                         Log.w("listener", "location");
-                        Toast.makeText( Settings.this, "Location", Toast.LENGTH_SHORT ).show( );
-                        // Do something
+                        if (locSwitch.isChecked()) {
+                            MainActivity.setLocation(true);
+                            Toast.makeText( Settings.this, "Location on", Toast.LENGTH_SHORT ).show( );
+                        } else {
+                            MainActivity.setLocation(false);
+                            Toast.makeText( Settings.this, "Location off", Toast.LENGTH_SHORT ).show( );
+                        }
                         break;
                 }
             }

@@ -117,12 +117,12 @@ public class MainActivity extends AppCompatActivity {
         notification = b;
     }
 
-    public static void setVibration() {
-        locationTimer = true;
+    public static void setVibration(boolean b) {
+        locationTimer = b;
     }
 
-    public static void setLocation() {
-        locationTimer = true;
+    public static void setLocation(boolean b) {
+        locationTimer = b;
     }
 
     public static void setPhraseGuessReady(boolean setter) {
