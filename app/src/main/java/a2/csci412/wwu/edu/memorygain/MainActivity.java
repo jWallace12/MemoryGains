@@ -4,14 +4,16 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static SharedPreferences sharedPreferences;
     private static boolean phraseTimer;
     private static boolean locationTimer;
     private static boolean phraseGuessReady;
@@ -20,22 +22,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        phraseTimer = false;
-        locationTimer = false;
-        phraseGuessReady = false;
-        locationGuessReady = false;
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        phraseTimer = sharedPreferences.getBoolean("phraseTimer", false);
+        locationTimer = sharedPreferences.getBoolean("locationTimer", false);
+        phraseGuessReady = sharedPreferences.getBoolean("phraseGuessReady", false);
+        locationGuessReady = sharedPreferences.getBoolean("locationGuessReady", false);
         setContentView(R.layout.activity_main);
     }
+
 
     protected void onResume( ) {
         super.onResume( );
 
         // if a new phrase was just accepted, start a new timer
         if (phraseTimer) {
-            setPhraseTimer(10000);
+            setPhraseTimer(100);
             phraseTimer = false;
         } else if (locationTimer) {
-            setLocationTimer(10000);
+            setLocationTimer(100);
             locationTimer = false;
         }
     }
@@ -47,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToPhraseGuess( View v ) {
         if (phraseGuessReady) {
-            phraseGuessReady = false;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("phraseGuessReady", false);
+            editor.commit();
             Intent myIntent = new Intent(this, PhraseGuess.class);
             this.startActivity(myIntent);
         } else {
@@ -105,5 +111,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void setLocationBoolean() { locationTimer = true; }
+
+    public static void setPhraseGuessReady(boolean setter) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("phraseGuessReady", setter);
+        editor.commit();
+    }
+
+    public static void setLocationGuessReady() {locationGuessReady = true;}
 
 }

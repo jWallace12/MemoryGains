@@ -14,7 +14,7 @@ import java.util.Random;
  */
 
 public class PhraseRecall extends AppCompatActivity{
-    SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences;
     private TextView givenPhrase;
     private String[] phraseList;
     private static String currentPhrase;
@@ -24,7 +24,7 @@ public class PhraseRecall extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrase_recall);
 
-        // retrieve the saved wor
+        // retrieve the saved word
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         currentPhrase = sharedPreferences.getString("phrase", "Default");
         givenPhrase = (TextView) findViewById(R.id.givenPhraseText);
@@ -32,17 +32,19 @@ public class PhraseRecall extends AppCompatActivity{
         testing.setText(currentPhrase);
 
         // load available phrases
-        phraseList = new String[] {"hello there", "Don't forget me", "Today is the best day", "Find out for yourself",
+        phraseList = new String[] {"Hello there", "Don't forget me", "Today is the best day", "Find out for yourself",
                 "Keep your head above water", "I'm always here for you", "Off to grandma's house we go", "You can't handle yourself",
                 "You don't know what you are saying", "Remembering is fun!", "I could never forget", "I'll never forget you",
                 "You are the light of my life", "I am very proud of you", "Where there is smoke there is fire", "I love you",
                 "You don't even know the half of it", "I forgive you", "Everything will be just fine", "Take my hand",
                 "Run as fast as you can", "I believe in you", "Don't worry about it", "I knew that", "It's the end of the world",
-                "Dont be afraid", "Never say never", "It's a diamond in the rough", "You're a one in a million", "The odds are against us"};
+                "Dont be afraid", "Never say never", "It's a diamond in the rough", "You're one in a million", "The odds are against us",
+                "It's never enough", "Knock on wood", "It's no big deal", "The rain in Spain fails on the train"};
     }
 
 
     public void newPhrase(View v) {
+
         //get random phrase
         Random generator = new Random();
         givenPhrase.setText(phraseList[generator.nextInt(phraseList.length-1)]);
@@ -70,7 +72,7 @@ public class PhraseRecall extends AppCompatActivity{
         // tell main activity that a new timer is being created, and
         // return to main activity
         MainActivity.setPhraseBoolean();
-        goBack();
+        goBackFromPhraseRecall();
     }
 
     public static String getCurrentPhrase() {
@@ -78,7 +80,7 @@ public class PhraseRecall extends AppCompatActivity{
     }
 
     // finish activity
-    public void goBack() {
+    public void goBackFromPhraseRecall() {
         this.finish( );
     }
 
