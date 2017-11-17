@@ -2,6 +2,7 @@ package a2.csci412.wwu.edu.memorygain;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ public class PhraseGuess extends AppCompatActivity {
     }
 
     // process the user's guess
-    public void guess() {
+    public void guessPhrase() {
 
         // get the guess
         EditText guessText = ( EditText ) findViewById(R.id.phraseGuess);
@@ -55,7 +56,8 @@ public class PhraseGuess extends AppCompatActivity {
         }
     }
 
-    public void giveHint() {
+    // give the user the first word in the phrase
+    public void giveHint(View v) {
         if (hint) {
             String[] splitter = answer.split(" ");
             Toast.makeText(this, "The first word in the expected phrase is: " + splitter[0], Toast.LENGTH_LONG);

@@ -35,6 +35,7 @@
 
     <!--Location Guess-->
     <string name="guessLocation">Guess That Location!</string>
+    <string name="cancel">Cancel</string>
 
     <!--Various-->
     <string name="guess">Guess!</string>

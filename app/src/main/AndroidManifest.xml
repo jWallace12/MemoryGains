@@ -23,12 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ImageRecall"></activity>
-        <activity android:name=".LocationRecall"></activity>
-        <activity android:name=".PhraseRecall"></activity>
-        <activity android:name=".Settings"></activity>
-        <activity android:name=".Statistics"></activity>
-        <activity android:name=".PhraseGuess"></activity>
+        <activity android:name=".ImageRecall"/>
+        <activity android:name=".LocationRecall"/>
+        <activity android:name=".LocationGuess"/>
+        <activity android:name=".PhraseRecall"/>
+        <activity android:name=".PhraseGuess"/>
+        <activity android:name=".Settings"/>
+        <activity android:name=".Statistics"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -47,9 +48,10 @@
             android:label="@string/title_activity_maps">
 
         </activity>
-        <receiver android:name=".PhraseAlarmNotificationReceiver">
 
-        </receiver>
+        <receiver android:name=".PhraseAlarmNotificationReceiver"/>
+        <receiver android:name=".LocationAlarmNotificationReceiver"/>
+
     </application>
 
 
