@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://C:\Users\danie\Desktop\Git\MemoryGains\MemoryGain.iml" filepath="C:\Users\danie\Desktop\Git\MemoryGains\MemoryGain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/MemoryGains.iml" filepath="$PROJECT_DIR$/.idea/MemoryGains.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MemoryGains.iml" filepath="$PROJECT_DIR$/MemoryGains.iml" />
       <module fileurl="file://C:\Users\Jonah\Documents\CSCI_412\Group_Project\MemoryGains\MemoryGains.iml" filepath="C:\Users\Jonah\Documents\CSCI_412\Group_Project\MemoryGains\MemoryGains.iml" />
+      <module fileurl="file://C:\Users\danie\Desktop\Git\MemoryGains\.idea\MemoryGains.iml" filepath="C:\Users\danie\Desktop\Git\MemoryGains\.idea\MemoryGains.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\Jonah\Documents\CSCI_412\Group_Project\MemoryGains\app\app.iml" filepath="C:\Users\Jonah\Documents\CSCI_412\Group_Project\MemoryGains\app\app.iml" />
     </modules>
