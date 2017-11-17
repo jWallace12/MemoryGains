@@ -29,7 +29,7 @@ public class PhraseGuess extends AppCompatActivity {
     }
 
     // process the user's guess
-    public void guessPhrase() {
+    public void guessPhrase(View v) {
 
         // get the guess
         EditText guessText = ( EditText ) findViewById(R.id.phraseGuess);
@@ -49,7 +49,7 @@ public class PhraseGuess extends AppCompatActivity {
             if (guesses == 0) {
                 Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. Try again!", Toast.LENGTH_LONG);
                 dbManager.insert(new Recall(0, "phrase", "fail"));
-                goBack();
+                this.finish();
             } else {
                 Toast.makeText(this, "Sorry, incorrect! You have " + guesses + " guesses remaining", Toast.LENGTH_SHORT);
             }
@@ -66,7 +66,7 @@ public class PhraseGuess extends AppCompatActivity {
     }
 
     // finish this activity
-    public void goBack() {
+    public void goBack(View v) {
         this.finish();
     }
 }
