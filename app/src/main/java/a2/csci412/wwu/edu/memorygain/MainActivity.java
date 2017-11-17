@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private static boolean locationTimer;
     private static boolean phraseGuessReady;
     private static boolean locationGuessReady;
+    private static boolean vibration, notification, location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void setLocationBoolean() { locationTimer = true; }
+
+    public static void setNotification(boolean b) {
+        notification = b;
+    }
+
+    public static void setVibration() {
+        locationTimer = true;
+    }
+
+    public static void setLocation() {
+        locationTimer = true;
+    }
 
     public static void setPhraseGuessReady(boolean setter) {
         SharedPreferences.Editor editor = sharedPreferences.edit();

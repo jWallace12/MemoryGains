@@ -15,12 +15,16 @@ import android.widget.Toast;
 
 public class Settings extends AppCompatActivity{
     Button resetBtn, clrCacheBtn;
-
+    Switch notifSwitch, vibSwitch, locSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        notifSwitch = (Switch) findViewById(R.id.notifSwitch);
+        vibSwitch = (Switch) findViewById(R.id.vibrateSwitch);
+        locSwitch = (Switch) findViewById(R.id.locationSwitch);
 
         //Listener for the switches ie location, vibrate, notifications
         CompoundButton.OnCheckedChangeListener multiListener = new CompoundButton.OnCheckedChangeListener() {
@@ -29,7 +33,13 @@ public class Settings extends AppCompatActivity{
                 switch (v.getId()) {
                     case R.id.notifSwitch:
                         Log.w("listener", "notif");
-                        Toast.makeText( Settings.this, "Notifications", Toast.LENGTH_SHORT ).show( );
+                        if (notifSwitch.isChecked()) {
+                            MainActivity.setNotification(true);
+                            Toast.makeText( Settings.this, "Notifications on", Toast.LENGTH_SHORT ).show( );
+                        } else {
+                            Toast.makeText( Settings.this, "Notifications off", Toast.LENGTH_SHORT ).show( );
+                        }
+
                         // Do something
                         break;
                     case R.id.vibrateSwitch:
