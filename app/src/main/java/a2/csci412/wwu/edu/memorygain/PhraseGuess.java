@@ -39,7 +39,7 @@ public class PhraseGuess extends AppCompatActivity {
         // entry into the database
 
         if (userGuess.equals(answer)) {
-            Toast.makeText(this, "Congratulations! You recalled the phrase!", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Congratulations! You recalled the phrase!", Toast.LENGTH_LONG).show();
             dbManager.insert(new Recall(0, "phrase", "pass"));
 
         // else, decrement remaining guesses
@@ -47,11 +47,11 @@ public class PhraseGuess extends AppCompatActivity {
         } else {
             guesses--;
             if (guesses == 0) {
-                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. Try again!", Toast.LENGTH_LONG);
+                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. Try again!", Toast.LENGTH_LONG).show();
                 dbManager.insert(new Recall(0, "phrase", "fail"));
                 this.finish();
             } else {
-                Toast.makeText(this, "Sorry, incorrect! You have " + guesses + " guesses remaining", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Sorry, incorrect! You have " + guesses + " guesses remaining", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -60,7 +60,7 @@ public class PhraseGuess extends AppCompatActivity {
     public void giveHint(View v) {
         if (hint) {
             String[] splitter = answer.split(" ");
-            Toast.makeText(this, "The first word in the expected phrase is: " + splitter[0], Toast.LENGTH_LONG);
+            Toast.makeText(this, "The first word in the expected phrase is: " + splitter[0], Toast.LENGTH_LONG).show();
             hint = false;
         }
     }

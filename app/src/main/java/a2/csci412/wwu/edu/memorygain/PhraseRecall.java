@@ -72,7 +72,7 @@ public class PhraseRecall extends AppCompatActivity{
         // tell main activity that a new timer is being created, and
         // return to main activity
         MainActivity.setPhraseBoolean();
-        goBackFromPhraseRecall();
+        this.finish();
     }
 
     public static String getCurrentPhrase() {
@@ -80,7 +80,7 @@ public class PhraseRecall extends AppCompatActivity{
     }
 
     // finish activity
-    public void goBackFromPhraseRecall() {
+    public void goBackFromPhraseRecall(View v) {
         this.finish( );
     }
 
