@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
             locationTimer = false;
         }
     }
+    protected void onStop( ) {
+        super.onStop( );
+    }
 
     public void goToPhraseRecall( View v ) {
         Intent myIntent = new Intent(this,PhraseRecall.class );
@@ -52,13 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToPhraseGuess( View v ) {
         if (phraseGuessReady) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("phraseGuessReady", false);
-            editor.commit();
             Intent myIntent = new Intent(this, PhraseGuess.class);
             this.startActivity(myIntent);
         } else {
-            Toast.makeText(this, "It is not time yet to guess a phrase.", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "It is not time yet to guess a phrase.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             Intent myIntent = new Intent(this, LocationGuess.class);
             this.startActivity(myIntent);
         } else {
-            Toast.makeText(this, "It is not time yet to guess a location.", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "It is not time yet to guess a location.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("phraseGuessReady", setter);
         editor.commit();
+        phraseGuessReady = setter;
     }
 
     public static void setLocationGuessReady() {locationGuessReady = true;}

@@ -1,6 +1,8 @@
 package a2.csci412.wwu.edu.memorygain;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,16 +13,18 @@ import android.widget.Toast;
  */
 
 public class LocationGuess extends AppCompatActivity {
-    private DatabaseManager dbManager;      // database to update
-    private String answer;                  // correct answer
-    private String oldTime;                 // time taken during location snapshot
-    private int guesses;                    // remaining user guesses
+    private SharedPreferences sharedPreferences;    // saved data
+    private DatabaseManager dbManager;              // database to update
+    private String answer;                          // correct answer
+    private String oldTime;                         // time taken during location snapshot
+    private int guesses;                            // remaining user guesses
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbManager = new DatabaseManager(this);
-        answer = PhraseRecall.getCurrentPhrase();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        answer = sharedPreferences.getString("location", null);
         guesses = 3;
         setContentView(R.layout.activity_guess_location);
 

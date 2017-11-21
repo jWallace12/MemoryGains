@@ -64,7 +64,7 @@ public class Statistics extends AppCompatActivity{
 
         locationText.setText("%" + (locationPercentage * 100));
         phraseText.setText("%" + (phrasePercentage * 100));
-        overallText.setText("%" + (overallSuccess / allRecalls));
+        overallText.setText("%" + (overallSuccess / allRecalls) * 100);
     }
 
     public void goBack( View v ) {
