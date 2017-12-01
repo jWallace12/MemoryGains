@@ -132,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
         phraseGuessReady = setter;
     }
 
-    public static void setLocationGuessReady() {locationGuessReady = true;}
+    public static void setLocationGuessReady(boolean setter) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("locationGuessReady", setter);
+        editor.commit();
+        locationGuessReady = setter;
+    }
 
 }

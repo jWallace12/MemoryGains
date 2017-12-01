@@ -47,7 +47,7 @@ public class PhraseGuess extends AppCompatActivity {
             Toast.makeText(this, "Congratulations! You recalled the phrase!", Toast.LENGTH_LONG).show();
             dbManager.insert(new Recall(0, "phrase", "pass"));
             resetPhrase();
-            //PhraseAlarmNotificationReceiver.setPhraseGuessFalse();
+            MainActivity.setPhraseGuessReady(false);
             this.finish();
 
         // else, decrement remaining guesses
@@ -58,7 +58,7 @@ public class PhraseGuess extends AppCompatActivity {
                 Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. Try again!", Toast.LENGTH_LONG).show();
                 dbManager.insert(new Recall(0, "phrase", "fail"));
                 resetPhrase();
-                //PhraseAlarmNotificationReceiver.setPhraseGuessFalse();
+                MainActivity.setPhraseGuessReady(false);
                 this.finish();
             } else {
                 Toast.makeText(this, "Sorry, incorrect! You have " + guesses + " guesses remaining", Toast.LENGTH_SHORT).show();

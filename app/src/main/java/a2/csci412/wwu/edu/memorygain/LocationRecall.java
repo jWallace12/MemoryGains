@@ -1,103 +1,126 @@
 package a2.csci412.wwu.edu.memorygain;
 
-import android.content.Intent;
-import android.content.IntentSender;
+import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderApi;
-import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Jonah on 10/31/2017.
  */
 
-public class LocationRecall extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+public class LocationRecall extends AppCompatActivity {
 
-    private static FusedLocationProviderApi flpa;
-    private static Location location;
-    private static final int REQUEST_CODE = 100;
-    private static GoogleApiClient gac;
+    private SharedPreferences sharedPreferences;
+    private LatLng latLng;
+    private LocationManager LM;
+    private String address;
+    private String time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_recall);
-        flpa = LocationServices.FusedLocationApi;
-        gac = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API).build();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        LM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        latLng = getLocation();
+        address = getAddress();
+        time = getTime();
+        TextView  addressView = findViewById(R.id.latLong);
+        TextView timeView = findViewById(R.id.currTime);
+        addressView.setText(address);
+        timeView.setText(time);
     }
 
-    protected void onStart() {
-        super.onStart();
-        if (gac != null) {
-            gac.connect();
+    public LatLng getLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        } else {
+            Location location = LM.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            return new LatLng(location.getLatitude(), location.getLongitude());
         }
+        return null;
     }
 
-    public void onConnected ( Bundle hint ) {
-        //flpa.requestLocationUpdates(gac, locationRequest, this);
-        recordLocation();
-    }
+    public String getAddress() {
+        Geocoder geocoder;
+        List<Address> addresses = null;
+        geocoder = new Geocoder(this, Locale.getDefault());
 
-    public void onConnectionFailed(ConnectionResult result) {
-        if (result.hasResolution()) {
-            try {
-                result.startResolutionForResult(this, REQUEST_CODE);
-            } catch (IntentSender.SendIntentException ex) {
-                Toast.makeText(this, "Problem with the connection, exiting", Toast.LENGTH_LONG).show();
-                finish();
-            }
-        }
-    }
-
-    public void onConnectionSuspended(int num) {
-
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-
-            // fixed issue, reconnect
-            gac.connect();
-        }
-    }
-
-    public void recordLocation() {
         try {
-            FusedLocationProviderApi flpa = LocationServices.FusedLocationApi;
-            location = flpa.getLastLocation(gac);
-            long time = System.currentTimeMillis();
-            if (location != null) {
-                double latitude = location.getLatitude();
-                double longitude = location.getLongitude();
-                TextView locView = findViewById(R.id.latLong);
-                TextView timeView = findViewById(R.id.time);
-                locView.setText("Lat - " + latitude + " === Long - " + longitude);
-                //timeView.setText(currentTime);
-            }
 
-        } catch (SecurityException ex) {
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
+        return addresses.get(0).getAddressLine(0);
+    }
+
+    public String getTime() {
+        Date currentTime = Calendar.getInstance().getTime();
+        String[] splitter = currentTime.toString().split(" ");
+        String justTime = splitter[3];
+        splitter = justTime.split(":");
+        String hour = splitter[0];
+        int hourInt = Integer.parseInt(hour);
+        boolean amOrPm;
+        if (hourInt < 13) {
+            amOrPm = true;
+        } else {
+            amOrPm = false;
+            hourInt -= 12;
+        }
+        String minutes = splitter[1];
+        String overallTime = hourInt + ":" + minutes;
+        if (amOrPm) {
+            overallTime += " AM";
+        } else {
+            overallTime += " PM";
+        }
+        return overallTime;
     }
 
 
 
-//    public void recordLocation( View v ) {
-//        Intent myIntent = new Intent(this, MapsActivity.class);
-//        this.startActivity(myIntent);
-//    }
+    protected void onStart() {
+        super.onStart();
+    }
+
+    public void acceptLocation(View v) {
+        // retrieve the phrase, and then save it into SharedPreferences
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("location", address);
+        editor.putString("time", time);
+        editor.commit();
+
+        // tell main activity that a new timer is being created, and
+        // return to main activity
+        MainActivity.setLocationBoolean();
+        this.finish();
+    }
+
 
     public void goBack( View v ) {
         this.finish( );
