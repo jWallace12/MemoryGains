@@ -87,7 +87,7 @@
         android:layout_weight="1"
         android:onClick="goToLocationRecall"
         android:text="@string/locationButton"
-        app:layout_constraintBottom_toTopOf="@+id/goToImageRecall"
+        app:layout_constraintBottom_toTopOf="@+id/goToImageNew"
         app:layout_constraintEnd_toStartOf="@+id/goToGuessLocation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goToPhraseRecall"
@@ -112,14 +112,14 @@
         tools:layout_constraintRight_creator="1" />
 
     <Button
-        android:id="@+id/goToImageRecall"
+        android:id="@+id/goToImageNew"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="45dp"
         android:layout_marginStart="41dp"
         android:layout_weight="1"
-        android:onClick="goToImageRecall"
+        android:onClick="goToImageNew"
         android:text="@string/imageButton"
         app:layout_constraintBottom_toTopOf="@+id/goToStats"
         app:layout_constraintEnd_toStartOf="@+id/goToGuessImage"
@@ -139,7 +139,7 @@
         android:onClick="goToImageRecall"
         android:text="@string/goToGuessImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/goToImageRecall"
+        app:layout_constraintStart_toEndOf="@+id/goToImageNew"
         app:layout_constraintTop_toBottomOf="@+id/goToGuessLocation"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
@@ -156,7 +156,7 @@
         app:layout_constraintBottom_toTopOf="@+id/goToSettings"
         app:layout_constraintEnd_toStartOf="@+id/goToGuessImage"
         app:layout_constraintStart_toStartOf="@+id/goToGuessImage"
-        app:layout_constraintTop_toBottomOf="@+id/goToImageRecall"
+        app:layout_constraintTop_toBottomOf="@+id/goToImageNew"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1" />

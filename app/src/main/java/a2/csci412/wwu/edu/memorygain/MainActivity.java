@@ -77,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void goToImageNew( View v ) {
+        Intent myIntent = new Intent(this, ImageNew.class);
+        this.startActivity(myIntent);
+    }
+
     public void goToImageRecall( View v ) {
         Intent myIntent = new Intent(this, ImageRecall.class);
         this.startActivity(myIntent);
