@@ -83,8 +83,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToImageRecall( View v ) {
-        Intent myIntent = new Intent(this, ImageRecall.class);
-        this.startActivity(myIntent);
+        if (sharedPreferences.getString("image", null) != null) {
+            Intent myIntent = new Intent(this, ImageRecall.class);
+            this.startActivity(myIntent);
+        } else {
+            Toast.makeText(this, "It is not time yet for image recall.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void goToStatistics( View v ) {

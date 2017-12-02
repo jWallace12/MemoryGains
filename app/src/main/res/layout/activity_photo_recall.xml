@@ -13,29 +13,49 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/button_image"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/photoDescription"
-        android:layout_centerHorizontal="true"
-        android:text="" />
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:layout_gravity="center"
-        android:orientation="horizontal">
-        <Button
+        android:orientation="vertical">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/photoDescription"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:text="Make a guess!" />
-        <Button
+            android:text="" />
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Give up!" />
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_make_guess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="makeGuess"
+                android:text="OK. I am ready to make a guess!" />
+            <Button
+                android:id="@+id/btn_guess_correct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="guessCorrect"
+                android:text="Correct!"
+                android:visibility="gone" />
+            <Button
+                android:id="@+id/btn_guess_incorrect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="guessIncorrect"
+                android:text="Incorrect!"
+                android:visibility="gone" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
