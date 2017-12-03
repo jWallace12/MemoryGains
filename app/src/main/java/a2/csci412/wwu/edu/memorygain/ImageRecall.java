@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,19 +52,19 @@ public class ImageRecall extends AppCompatActivity{
     }
 
     // log a correct guess from the user
-    public void makeGuess(View view) {
-        // change button visibility
-        Button makeGuess = findViewById(R.id.btn_make_guess);
-        Button guessCorrect = findViewById(R.id.btn_guess_correct);
-        Button guessIncorrect = findViewById(R.id.btn_guess_incorrect);
-
-        makeGuess.setVisibility(View.GONE);
-        guessCorrect.setVisibility(View.VISIBLE);
-        guessIncorrect.setVisibility(View.VISIBLE);
-
-        // show the image
-        showImage();
-    }
+//    public void makeGuess(View view) {
+//        // change button visibility
+//        //Button makeGuess = findViewById(R.id.btn_make_guess);
+//        Button guessCorrect = findViewById(R.id.btn_guess_correct);
+//        //Button guessIncorrect = findViewById(R.id.btn_guess_incorrect);
+//
+//        makeGuess.setVisibility(View.GONE);
+//        guessCorrect.setVisibility(View.VISIBLE);
+//        guessIncorrect.setVisibility(View.VISIBLE);
+//
+//        // show the image
+//        showImage();
+//    }
 
     // log a correct guess from the user
     public void guessCorrect(View view) {
