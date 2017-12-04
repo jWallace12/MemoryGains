@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static SharedPreferences sharedPreferences;
-    private static boolean vibration, notification, location, phraseTimer, locationTimer, imageTimer,
+    private static boolean vibration, notification, gps, phraseTimer, locationTimer, imageTimer,
                             phraseGuessReady, locationGuessReady, imageGuessReady;
 
     @Override
@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         locationTimer = sharedPreferences.getBoolean("locationTimer", false);
         phraseGuessReady = sharedPreferences.getBoolean("phraseGuessReady", false);
         locationGuessReady = sharedPreferences.getBoolean("locationGuessReady", false);
+        notification = sharedPreferences.getBoolean("notification", true);
+        vibration = sharedPreferences.getBoolean("vibration", true);
+        gps = sharedPreferences.getBoolean("gps", true);
         setContentView(R.layout.activity_main);
     }
 
@@ -69,8 +72,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToLocationRecall( View v ) {
-        Intent myIntent = new Intent(this, LocationRecall.class);
-        this.startActivity(myIntent);
+        if (gps) {
+            Intent myIntent = new Intent(this, LocationRecall.class);
+            this.startActivity(myIntent);
+        } else {
+            Toast.makeText(this, "GPS services disabled. Turn on in Settings to use", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void goToLocationGuess( View v ) {
@@ -139,17 +146,24 @@ public class MainActivity extends AppCompatActivity {
     public static void setImageBoolean() { imageTimer = true; }
 
     public static void setNotification(boolean b) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("notification", b);
+        editor.commit();
         notification = b;
     }
 
     public static void setVibration(boolean b) {
-
-        //locationTimer = b;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("vibration", b);
+        editor.commit();
+        vibration = b;
     }
 
-    public static void setLocation(boolean b) {
-
-        //locationTimer = b;
+    public static void setGPS(boolean b) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("gps", b);
+        editor.commit();
+        gps = b;
     }
 
     public static void setPhraseGuessReady(boolean setter) {

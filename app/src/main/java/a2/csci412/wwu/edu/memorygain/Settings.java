@@ -68,10 +68,10 @@ public class Settings extends AppCompatActivity {
                     case R.id.locationSwitch:
                         Log.w("listener", "location");
                         if (locSwitch.isChecked()) {
-                            MainActivity.setLocation(true);
+                            MainActivity.setGPS(true);
                             Toast.makeText( Settings.this, "Location on", Toast.LENGTH_SHORT ).show( );
                         } else {
-                            MainActivity.setLocation(false);
+                            MainActivity.setGPS(false);
                             Toast.makeText( Settings.this, "Location off", Toast.LENGTH_SHORT ).show( );
                         }
                         break;
