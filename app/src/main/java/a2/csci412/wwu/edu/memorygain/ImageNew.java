@@ -122,6 +122,7 @@ public class ImageNew extends AppCompatActivity{
 
     // save picture and return
     public void savePicture(View view) {
+        MainActivity.setImageBoolean();
         finish();
     }
 

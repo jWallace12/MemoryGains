@@ -24,6 +24,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    // create new table
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreate = "create table " + TABLE_NAME + "( " + ID;
@@ -38,6 +39,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // delete all data
+    public void deleteData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+    // insert new data
     public void insert(Recall data){
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "insert into " + TABLE_NAME;
@@ -47,6 +56,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    // select all entries by type
     public ArrayList<Recall> selectByType(String type) {
         String sqlQuery = "select * from " + TABLE_NAME;
         sqlQuery += " where " + typeCol + " = '" + type + "'";

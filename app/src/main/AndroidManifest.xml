@@ -55,6 +55,7 @@
 
         <receiver android:name=".PhraseAlarmNotificationReceiver"/>
         <receiver android:name=".LocationAlarmNotificationReceiver"/>
+        <receiver android:name=".ImageAlarmNotificationReceiver" />
 
     </application>
 

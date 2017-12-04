@@ -33,6 +33,7 @@ public class LocationRecall extends AppCompatActivity {
     private LocationManager LM;
     private String address;
     private String time;
+    private String date;
 
 
     @Override
@@ -40,16 +41,20 @@ public class LocationRecall extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_recall);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // get address, time and date, and write them to the screen
         LM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         latLng = getLocation();
         address = getAddress();
         time = getTime();
-        TextView  addressView = findViewById(R.id.latLong);
+        date = getDate();
+        TextView addressView = findViewById(R.id.latLong);
         TextView timeView = findViewById(R.id.currTime);
         addressView.setText(address);
         timeView.setText(time);
     }
 
+    // return current GPS coordinates
     public LatLng getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
@@ -62,6 +67,7 @@ public class LocationRecall extends AppCompatActivity {
         return null;
     }
 
+    // return current address
     public String getAddress() {
         Geocoder geocoder;
         List<Address> addresses = null;
@@ -75,23 +81,41 @@ public class LocationRecall extends AppCompatActivity {
             ex.printStackTrace();
         }
 
-        return addresses.get(0).getAddressLine(0);
+        // format and return the address
+        String address = addresses.get(0).getAddressLine(0);
+        String[] splitter = address.split(",");
+        address =  splitter[0] + "," + splitter[1] + ", ";
+        splitter = splitter[2].split(" ");
+        address += splitter[1];
+        return address;
     }
 
+    // get current time
     public String getTime() {
+        boolean amOrPm;
         Date currentTime = Calendar.getInstance().getTime();
         String[] splitter = currentTime.toString().split(" ");
         String justTime = splitter[3];
         splitter = justTime.split(":");
         String hour = splitter[0];
         int hourInt = Integer.parseInt(hour);
-        boolean amOrPm;
-        if (hourInt < 13) {
+
+        // edge case:
+        if (hourInt == 0) {
+            hourInt = 12;
             amOrPm = true;
         } else {
-            amOrPm = false;
-            hourInt -= 12;
+
+            // find if the time is AM or PM
+            if (hourInt < 12) {
+                amOrPm = true;
+            } else {
+                amOrPm = false;
+                hourInt -= 12;
+            }
         }
+
+        // format and return time
         String minutes = splitter[1];
         String overallTime = hourInt + ":" + minutes;
         if (amOrPm) {
@@ -102,6 +126,14 @@ public class LocationRecall extends AppCompatActivity {
         return overallTime;
     }
 
+    // return current day of week, month, and date
+    public String getDate() {
+        Date date = Calendar.getInstance().getTime();
+        String dateString = date.toString();
+        String[] splitter = dateString.split(" ");
+        return splitter[0] + ", " + splitter[1] + " " + splitter[2];
+    }
+
 
 
     protected void onStart() {
@@ -109,10 +141,12 @@ public class LocationRecall extends AppCompatActivity {
     }
 
     public void acceptLocation(View v) {
+
         // retrieve the phrase, and then save it into SharedPreferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("location", address);
         editor.putString("time", time);
+        editor.putString("date", date);
         editor.commit();
 
         // tell main activity that a new timer is being created, and
@@ -121,7 +155,7 @@ public class LocationRecall extends AppCompatActivity {
         this.finish();
     }
 
-
+    // return to main screen
     public void goBack( View v ) {
         this.finish( );
     }

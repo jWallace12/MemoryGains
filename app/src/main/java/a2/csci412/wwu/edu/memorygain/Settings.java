@@ -1,11 +1,13 @@
 package a2.csci412.wwu.edu.memorygain;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -13,14 +15,26 @@ import android.widget.Toast;
  * Created by Jonah on 10/31/2017.
  */
 
-public class Settings extends AppCompatActivity{
-    Button resetBtn, clrCacheBtn;
+public class Settings extends AppCompatActivity {
+    private SharedPreferences sharedPreferences;            // saved data
+    DatabaseManager dbManager;                              // database instance
     Switch notifSwitch, vibSwitch, locSwitch;
+    EditText newPhraseTime, newLocationTime, newImageTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dbManager = new DatabaseManager(this);
         setContentView(R.layout.activity_settings);
+
+        // get the saved values for the timers and write them to the screen
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        newPhraseTime = findViewById(R.id.newPhraseTime);
+        newLocationTime = findViewById(R.id.newLocationTime);
+        newImageTime = findViewById(R.id.newImageTime);
+        newPhraseTime.setText(Integer.toString(sharedPreferences.getInt("newPhraseTime", 12)));
+        newLocationTime.setText(Integer.toString(sharedPreferences.getInt("newLocationTime", 12)));
+        newImageTime.setText(Integer.toString(sharedPreferences.getInt("newImageTime", 12)));
 
         notifSwitch = (Switch) findViewById(R.id.notifSwitch);
         vibSwitch = (Switch) findViewById(R.id.vibrateSwitch);
@@ -43,7 +57,7 @@ public class Settings extends AppCompatActivity{
                         break;
                     case R.id.vibrateSwitch:
                         Log.w("listener", "vibe");
-                        if (notifSwitch.isChecked()) {
+                        if (vibSwitch.isChecked()) {
                             MainActivity.setVibration(true);
                             Toast.makeText( Settings.this, "Vibrate on", Toast.LENGTH_SHORT ).show( );
                         } else {
@@ -74,12 +88,28 @@ public class Settings extends AppCompatActivity{
         //clear cache
     }
 
+    // return timers to default time and delete all data
     public void reset( View v) {
         Log.w("reset", "reset");
-        //clear shit
+        newPhraseTime.setText("12");
+        newLocationTime.setText("12");
+        newImageTime.setText("12");
+        dbManager.deleteData();
     }
 
+    // save the timer lengths and return to main screen
     public void goBack( View v ) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        try {
+            editor.putInt("phraseTime", Integer.parseInt(newPhraseTime.getText().toString()));
+            editor.putInt("locationTime", Integer.parseInt(newLocationTime.getText().toString()));
+            editor.putInt("imageTime", Integer.parseInt(newImageTime.getText().toString()));
+            editor.commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         this.finish( );
     }
+
+
 }

@@ -14,15 +14,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static SharedPreferences sharedPreferences;
-    private static boolean phraseTimer;
-    private static boolean locationTimer;
-    private static boolean phraseGuessReady;
-    private static boolean locationGuessReady;
-    private static boolean vibration, notification, location;
+    private static boolean vibration, notification, location, phraseTimer, locationTimer, imageTimer,
+                            phraseGuessReady, locationGuessReady, imageGuessReady;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // load data
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         phraseTimer = sharedPreferences.getBoolean("phraseTimer", false);
         locationTimer = sharedPreferences.getBoolean("locationTimer", false);
@@ -35,15 +34,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume( ) {
         super.onResume( );
 
-        // if a new phrase was just accepted, start a new timer
+        // if a new recall was just completed, start the
+        // corresponding timer
         if (phraseTimer) {
-            setPhraseTimer(100);
+            setPhraseTimer();
             phraseTimer = false;
         } else if (locationTimer) {
-            setLocationTimer(100);
+            setLocationTimer();
             locationTimer = false;
+        } else if (imageTimer) {
+            setImageTimer();
+            imageTimer = false;
         }
     }
+
     protected void onStop( ) {
         super.onStop( );
     }
@@ -53,8 +57,10 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
+    // guess phrase if it is time
     public void goToPhraseGuess( View v ) {
         if (phraseGuessReady) {
+            phraseGuessReady = false;
             Intent myIntent = new Intent(this, PhraseGuess.class);
             this.startActivity(myIntent);
         } else {
@@ -83,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToImageRecall( View v ) {
-        if (sharedPreferences.getString("image", null) != null) {
+        if (imageGuessReady) {
+            imageGuessReady = false;
             Intent myIntent = new Intent(this, ImageRecall.class);
             this.startActivity(myIntent);
         } else {
@@ -101,37 +108,48 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
-    // set up timer for notification to
-    public void setPhraseTimer(int time) {
+    // set up timer for notification for phrase
+    public void setPhraseTimer() {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, PhraseAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + time, pendingIntent);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + sharedPreferences.getInt("newPhraseTime", 12), pendingIntent);
     }
 
-    public void setLocationTimer(int time) {
+    // set up timer for notification for location
+    public void setLocationTimer() {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, LocationAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + time, pendingIntent);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + sharedPreferences.getInt("newLocationTime", 12), pendingIntent);
     }
 
-    public static void setPhraseBoolean() {
-        phraseTimer = true;
+    // set up timer notification for image
+    public void setImageTimer() {
+        AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent myIntent = new Intent(MainActivity.this, ImageAlarmNotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + sharedPreferences.getInt("newImageTime", 12), pendingIntent);
     }
+
+    public static void setPhraseBoolean() { phraseTimer = true; }
 
     public static void setLocationBoolean() { locationTimer = true; }
+
+    public static void setImageBoolean() { imageTimer = true; }
 
     public static void setNotification(boolean b) {
         notification = b;
     }
 
     public static void setVibration(boolean b) {
-        locationTimer = b;
+
+        //locationTimer = b;
     }
 
     public static void setLocation(boolean b) {
-        locationTimer = b;
+
+        //locationTimer = b;
     }
 
     public static void setPhraseGuessReady(boolean setter) {
@@ -146,6 +164,13 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("locationGuessReady", setter);
         editor.commit();
         locationGuessReady = setter;
+    }
+
+    public static void setImageGuessReady(boolean setter) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("imageGuessReady", setter);
+        editor.commit();
+        imageGuessReady = setter;
     }
 
 }

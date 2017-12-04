@@ -17,7 +17,8 @@ public class LocationGuess extends AppCompatActivity {
     private SharedPreferences sharedPreferences;    // saved data
     private DatabaseManager dbManager;              // database to update
     private String answer;                          // correct answer
-    private String oldTime;                         // time taken during location snapshot
+    private String time;                            // time taken during location snapshot
+    private String date;                            // date taken during location snapshot
     private int guesses;
     private boolean hint;
 
@@ -28,14 +29,16 @@ public class LocationGuess extends AppCompatActivity {
         dbManager = new DatabaseManager(this);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         answer = sharedPreferences.getString("location", null);
-        oldTime = sharedPreferences.getString("time", null);
+        time = sharedPreferences.getString("time", null);
+        date = sharedPreferences.getString("date", null);
         guesses = 3;
         hint = true;
         setContentView(R.layout.activity_guess_location);
 
         // remind the user at what time that snapshot was taken
         TextView heading = (TextView) findViewById(R.id.locationGuessMessage);
-        heading.setText("Think back hard... Where were you at " + oldTime + "?");
+        heading.setText("Think back hard... Where were you at " + time +
+                " on " + date + "?");
 
     }
 
@@ -61,7 +64,7 @@ public class LocationGuess extends AppCompatActivity {
         } else {
             guesses--;
             if (guesses == 0) {
-                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. Try again!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. The answer was " + answer + "Try again!", Toast.LENGTH_LONG).show();
                 dbManager.insert(new Recall(0, "location", "fail"));
                 MainActivity.setLocationGuessReady(false);
                 this.finish();
@@ -80,6 +83,7 @@ public class LocationGuess extends AppCompatActivity {
         }
     }
 
+    // return to main screen
     public void goBack(View v){
         this.finish();
     }

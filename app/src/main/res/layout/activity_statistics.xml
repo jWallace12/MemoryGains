@@ -10,10 +10,10 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
+        android:layout_width="207dp"
         android:layout_height="117dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/graph"
@@ -25,10 +25,14 @@
         android:id="@+id/locationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
         android:text="Location Recall Success: "
-        app:layout_constraintBaseline_toBaselineOf="@+id/locationStats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phraseView"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
@@ -48,46 +52,78 @@
         android:id="@+id/phraseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="194dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="214dp"
         android:text="Phrase Recall Success: "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/locationView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/overallView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
         android:text="Overall Recall Success: "
-        app:layout_constraintBaseline_toBaselineOf="@+id/overallStats"
-        app:layout_constraintStart_toStartOf="@+id/phraseView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/locationStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="15dp"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/phraseView"
-        app:layout_constraintEnd_toStartOf="@+id/phraseStats"
-        app:layout_constraintStart_toStartOf="@+id/phraseStats" />
+        app:layout_constraintEnd_toStartOf="@+id/imageStats"
+        app:layout_constraintStart_toStartOf="@+id/imageStats"
+        app:layout_constraintTop_toBottomOf="@+id/phraseStats" />
 
     <TextView
         android:id="@+id/phraseStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="12dp"
         android:text=""
-        app:layout_constraintEnd_toStartOf="@+id/overallStats"
-        app:layout_constraintStart_toStartOf="@+id/overallStats"
-        app:layout_constraintTop_toBottomOf="@+id/locationStats" />
+        app:layout_constraintBottom_toTopOf="@+id/locationView"
+        app:layout_constraintEnd_toStartOf="@+id/locationStats"
+        app:layout_constraintStart_toStartOf="@+id/locationStats" />
 
     <TextView
         android:id="@+id/overallStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="18dp"
         android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/overallView"
-        app:layout_constraintTop_toBottomOf="@+id/phraseStats" />
+        app:layout_constraintTop_toBottomOf="@+id/imageStats" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Image Recall Success:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationView" />
+
+    <TextView
+        android:id="@+id/imageStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/overallStats"
+        app:layout_constraintStart_toStartOf="@+id/overallStats"
+        app:layout_constraintTop_toBottomOf="@+id/locationStats" />
 </android.support.constraint.ConstraintLayout>
