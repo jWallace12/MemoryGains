@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:onClick="guessCorrect"
-                android:text="Correct!"
+                android:text="I Was Correct!"
                 android:visibility="gone" />
             <Button
                 android:id="@+id/btn_guess_incorrect"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:onClick="guessIncorrect"
-                android:text="Incorrect!"
+                android:text="I Was Incorrect!"
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>

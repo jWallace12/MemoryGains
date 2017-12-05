@@ -27,12 +27,12 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="396dp"
-        android:layout_height="0dp"
+        android:layout_width="330dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="89dp"
         android:layout_marginTop="198dp"
-        android:text="Click the button below to snapshot your location. This will record your location, and current time."
-        android:textSize="24sp"
+        android:text="Below is your current location and time. Remember this address."
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/currTime"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -51,9 +51,11 @@
         android:onClick="acceptLocation"
         android:text="Accept Location"
         app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button12"
+        app:layout_constraintVertical_bias="0.714"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1" />
 
@@ -75,33 +77,36 @@
         android:id="@+id/latLong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="49dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/currTime"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/currTime" />
+        app:layout_constraintBottom_toTopOf="@+id/button12"
+        app:layout_constraintEnd_toStartOf="@+id/button12"
+        app:layout_constraintStart_toStartOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/currTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="477dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintBottom_toBottomOf="@+id/latLong"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/button12"
+        app:layout_constraintTop_toTopOf="@+id/latLong" />
 
     <Button
         android:id="@+id/button12"
         android:layout_width="140dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="153dp"
+        android:layout_marginBottom="180dp"
         android:onClick="goToMaps"
         android:text="View In Map"
         app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>

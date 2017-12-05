@@ -14,7 +14,7 @@
 
     <!--Phrase recall-->
     <string name="phraseTitleText">Phrase Recall</string>
-    <string name="directions">Directions: Remember this phrase. At random, you will receive a notification,
+    <string name="directions">Remember this phrase. At random, you will receive a notification,
             prompting you to enter the phrase.</string>
     <string name="accept">Accept Phrase</string>
     <string name="newPhrs">New Phrase</string>
@@ -34,10 +34,13 @@
     <string name="title_activity_maps">Map</string>
 
     <!--Location Guess-->
+    <string name="locationRecall">Location Recall</string>
     <string name="guessLocation">Guess That Location!</string>
-    <string name="cancel">Cancel</string>
 
     <!--Various-->
     <string name="guess">Guess!</string>
+    <string name="cancel">Cancel</string>
+    <string name="hint">Hint</string>
+    <string name="main">Main Page</string>
 
 </resources>
