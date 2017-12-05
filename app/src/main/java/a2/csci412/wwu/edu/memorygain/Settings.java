@@ -39,6 +39,9 @@ public class Settings extends AppCompatActivity {
         notifSwitch = (Switch) findViewById(R.id.notifSwitch);
         vibSwitch = (Switch) findViewById(R.id.vibrateSwitch);
         locSwitch = (Switch) findViewById(R.id.locationSwitch);
+        notifSwitch.setChecked(sharedPreferences.getBoolean("notification", true));
+        vibSwitch.setChecked(sharedPreferences.getBoolean("vibration", true));
+        locSwitch.setChecked(sharedPreferences.getBoolean("gps", true));
 
         //Listener for the switches ie location, vibrate, notifications
         CompoundButton.OnCheckedChangeListener multiListener = new CompoundButton.OnCheckedChangeListener() {
@@ -101,9 +104,9 @@ public class Settings extends AppCompatActivity {
     public void goBack( View v ) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         try {
-            editor.putInt("phraseTime", Integer.parseInt(newPhraseTime.getText().toString()));
-            editor.putInt("locationTime", Integer.parseInt(newLocationTime.getText().toString()));
-            editor.putInt("imageTime", Integer.parseInt(newImageTime.getText().toString()));
+            editor.putInt("newPhraseTime", Integer.parseInt(newPhraseTime.getText().toString()));
+            editor.putInt("newLocationTime", Integer.parseInt(newLocationTime.getText().toString()));
+            editor.putInt("newImageTime", Integer.parseInt(newImageTime.getText().toString()));
             editor.commit();
         } catch (Exception ex) {
             ex.printStackTrace();

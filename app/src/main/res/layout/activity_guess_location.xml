@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="89dp">
 
     <TextView
         android:id="@+id/wrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="78dp"
+        android:layout_width="153dp"
+        android:layout_height="823dp"
+        android:layout_marginStart="440dp"
         android:text=""
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="parent" />
@@ -19,70 +18,74 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="361dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="133dp"
+        android:layout_marginTop="41dp"
         android:text="@string/guessLocation"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/greeting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/locationGuessMessage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <EditText
+        android:id="@+id/locationGuess"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="55dp"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="175dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="220dp"
+        android:onClick="guess"
+        android:text="guess!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/locationGuessMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greeting" />
-
-    <EditText
-        android:id="@+id/locationGuess"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="159dp"
-        android:onClick="guess"
-        android:text="guess"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationGuess" />
-
-    <TextView
-        android:id="@+id/greeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginBottom="71dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/locationGuessMessage"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="11dp"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="73dp"
         android:onClick="giveHintLocation"
-        android:text="Hint"
+        android:text="Hint?"
         app:layout_constraintBottom_toTopOf="@+id/locationGuess"
-        app:layout_constraintEnd_toStartOf="@+id/locationGuessMessage"
-        app:layout_constraintStart_toStartOf="@+id/locationGuessMessage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationGuessMessage" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="112dp"
+        android:onClick="goBack"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

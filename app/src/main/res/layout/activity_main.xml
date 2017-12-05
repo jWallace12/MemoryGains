@@ -14,88 +14,108 @@
     <TextView
         android:id="@+id/messageSet"
         android:layout_width="wrap_content"
-        android:layout_height="1dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="212dp"
+        android:layout_marginStart="231dp"
+        android:layout_marginTop="13dp"
         android:textAlignment="center"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/recallText"
+        app:layout_constraintEnd_toEndOf="@+id/recallText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_editor_absoluteX="231dp"
-        tools:layout_editor_absoluteY="14dp" />
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/recallText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="29dp"
         android:layout_weight="2"
         android:gravity="center"
         android:text="@string/mainHeading"
         android:textAlignment="center"
         android:textSize="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/goToGuessPhrase"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_editor_absoluteY="30dp" />
+        tools:layout_constraintLeft_creator="1" />
 
     <Button
         android:id="@+id/goToPhraseRecall"
         android:layout_width="200dp"
-        android:layout_height="75dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="339dp"
         android:layout_marginStart="8dp"
         android:layout_weight="1"
         android:onClick="goToPhraseRecall"
         android:text="@string/phraseButton"
+        app:layout_constraintBottom_toTopOf="@+id/goToStats"
         app:layout_constraintEnd_toEndOf="@+id/goToLocationRecall"
         app:layout_constraintStart_toStartOf="@+id/goToLocationRecall"
+        app:layout_constraintTop_toBottomOf="@+id/recallText"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_editor_absoluteY="109dp" />
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/goToGuessPhrase"
         android:layout_width="200dp"
         android:layout_height="75dp"
+        android:layout_marginBottom="61dp"
         android:layout_marginStart="8dp"
         android:layout_weight="1"
         android:onClick="goToPhraseGuess"
         android:text="@string/goToPhraseGuess"
+        app:layout_constraintBottom_toTopOf="@+id/goToGuessLocation"
         app:layout_constraintEnd_toEndOf="@+id/goToGuessLocation"
         app:layout_constraintStart_toStartOf="@+id/goToGuessLocation"
+        app:layout_constraintTop_toBottomOf="@+id/recallText"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_editor_absoluteY="109dp" />
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/goToLocationRecall"
         android:layout_width="200dp"
         android:layout_height="75dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginStart="59dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:onClick="goToLocationRecall"
         android:text="@string/locationButton"
         app:layout_constraintBottom_toTopOf="@+id/goToImageNew"
+        app:layout_constraintEnd_toStartOf="@+id/goToGuessLocation"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goToPhraseRecall"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_editor_absoluteX="60dp" />
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/goToGuessLocation"
         android:layout_width="200dp"
         android:layout_height="75dp"
+        android:layout_marginBottom="506dp"
+        android:layout_marginEnd="59dp"
         android:layout_weight="1"
         android:onClick="goToLocationGuess"
         android:text="@string/goToLocationGuess"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/goToLocationRecall"
+        app:layout_constraintTop_toBottomOf="@+id/goToGuessPhrase"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_editor_absoluteX="342dp"
-        tools:layout_editor_absoluteY="245dp" />
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/goToImageNew"
@@ -133,17 +153,19 @@
         android:id="@+id/goToStats"
         android:layout_width="200dp"
         android:layout_height="75dp"
+        android:layout_marginBottom="228dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_weight="1"
         android:onClick="goToStatistics"
         android:text="@string/statsButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recallText"
         app:layout_constraintStart_toStartOf="@+id/recallText"
+        app:layout_constraintTop_toBottomOf="@+id/goToPhraseRecall"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_editor_absoluteY="524dp" />
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/goToSettings"
@@ -157,6 +179,7 @@
         android:text="@string/settingsButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/goToStats"
+        app:layout_constraintStart_toStartOf="@+id/goToStats"
         app:layout_constraintTop_toBottomOf="@+id/goToStats"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"

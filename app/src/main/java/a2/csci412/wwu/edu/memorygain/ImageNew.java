@@ -102,6 +102,7 @@ public class ImageNew extends AppCompatActivity{
 
     // take a picture
     public void takePicture(View view) {
+
         // load shared data
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -138,6 +139,7 @@ public class ImageNew extends AppCompatActivity{
 
     // generate a new image file in memory
     private static File getOutputMediaFile(){
+
         // attempt to create file
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), "MemoryGains");

@@ -42,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
         if (phraseTimer) {
             setPhraseTimer();
             phraseTimer = false;
+            phraseGuessReady = false;
         } else if (locationTimer) {
             setLocationTimer();
             locationTimer = false;
+            locationGuessReady = false;
         } else if (imageTimer) {
             setImageTimer();
             imageTimer = false;
+            imageGuessReady = false;
         }
     }
 
@@ -120,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, PhraseAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + sharedPreferences.getInt("newPhraseTime", 12), pendingIntent);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() +
+                sharedPreferences.getInt("newPhraseTime", 12) * 3600000, pendingIntent);
     }
 
     // set up timer for notification for location
@@ -128,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, LocationAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + sharedPreferences.getInt("newLocationTime", 12), pendingIntent);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() +
+                sharedPreferences.getInt("newLocationTime", 12) * 3600000, pendingIntent);
     }
 
     // set up timer notification for image
@@ -136,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, ImageAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + sharedPreferences.getInt("newImageTime", 12), pendingIntent);
+        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() +
+                sharedPreferences.getInt("newImageTime", 12) * 3600000, pendingIntent);
     }
 
     public static void setPhraseBoolean() { phraseTimer = true; }

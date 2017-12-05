@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="207dp"
-        android:layout_height="0dp"
+        android:layout_height="318dp"
         android:layout_marginBottom="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -78,33 +78,35 @@
 
     <TextView
         android:id="@+id/locationStats"
-        android:layout_width="wrap_content"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="50dp"
         android:text=""
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/phraseStats" />
+        app:layout_constraintStart_toEndOf="@+id/locationView"
+        app:layout_constraintTop_toTopOf="@+id/locationView" />
 
     <TextView
         android:id="@+id/phraseStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/locationView"
-        app:layout_constraintStart_toEndOf="@+id/imageView3" />
+        app:layout_constraintBottom_toBottomOf="@+id/phraseView"
+        app:layout_constraintEnd_toStartOf="@+id/locationStats"
+        app:layout_constraintStart_toEndOf="@+id/locationStats"
+        app:layout_constraintTop_toTopOf="@+id/phraseView" />
 
     <TextView
         android:id="@+id/overallStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="59dp"
         android:text=""
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageStats" />
+        app:layout_constraintBottom_toBottomOf="@+id/overallView"
+        app:layout_constraintStart_toEndOf="@+id/overallView"
+        app:layout_constraintTop_toTopOf="@+id/overallView" />
 
     <TextView
         android:id="@+id/textView10"
@@ -121,8 +123,9 @@
         android:id="@+id/imageStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/locationStats" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/overallStats"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
 </android.support.constraint.ConstraintLayout>

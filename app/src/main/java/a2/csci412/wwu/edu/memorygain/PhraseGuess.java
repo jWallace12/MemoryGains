@@ -43,7 +43,7 @@ public class PhraseGuess extends AppCompatActivity {
         // if the user guessed correctly, tell the user they were successful, and add a successful
         // entry into the database
 
-        if (userGuess.equals(answer)) {
+        if (userGuess.toLowerCase().equals(answer.toLowerCase())) {
             Toast.makeText(this, "Congratulations! You recalled the phrase!", Toast.LENGTH_LONG).show();
             dbManager.insert(new Recall(0, "phrase", "pass"));
             resetPhrase();
@@ -55,7 +55,8 @@ public class PhraseGuess extends AppCompatActivity {
         } else {
             guesses--;
             if (guesses == 0) {
-                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. Try again!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. The correct" +
+                        " answer was: '" + answer + "' . Try again!", Toast.LENGTH_LONG).show();
                 dbManager.insert(new Recall(0, "phrase", "fail"));
                 resetPhrase();
                 MainActivity.setPhraseGuessReady(false);
@@ -70,7 +71,7 @@ public class PhraseGuess extends AppCompatActivity {
     public void giveHint(View v) {
         if (hint) {
             String[] splitter = answer.split(" ");
-            Toast.makeText(this, "The first word in the expected phrase is: " + splitter[0], Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "The first word in the expected phrase is: '" + splitter[0] + "'", Toast.LENGTH_LONG).show();
             hint = false;
         }
     }

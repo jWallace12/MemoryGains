@@ -52,7 +52,7 @@ public class LocationGuess extends AppCompatActivity {
         // if the user guessed correctly, tell the user they were successfully, and add a successful
         // entry into the database
 
-        if ((userGuess != null) && (userGuess.equals(answer))) {
+        if ((userGuess != null) && (userGuess.toLowerCase().equals(answer.toLowerCase()))) {
             Toast.makeText(this, "Congratulations! You recalled the location!", Toast.LENGTH_LONG).show();
             dbManager.insert(new Recall(0, "location", "pass"));
             MainActivity.setLocationGuessReady(false);
@@ -64,7 +64,8 @@ public class LocationGuess extends AppCompatActivity {
         } else {
             guesses--;
             if (guesses == 0) {
-                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. The answer was " + answer + "Try again!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Sorry, incorrect. You have run out of guesses. The answer was: '" + answer
+                        + "' Try again!", Toast.LENGTH_LONG).show();
                 dbManager.insert(new Recall(0, "location", "fail"));
                 MainActivity.setLocationGuessReady(false);
                 this.finish();

@@ -2,6 +2,7 @@ package a2.csci412.wwu.edu.memorygain;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -29,9 +30,9 @@ import java.util.Locale;
 public class LocationRecall extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
-    private LatLng latLng;
+    private static LatLng latLng;
     private LocationManager LM;
-    private String address;
+    private static String address;
     private String time;
     private String date;
 
@@ -74,9 +75,7 @@ public class LocationRecall extends AppCompatActivity {
         geocoder = new Geocoder(this, Locale.getDefault());
 
         try {
-
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -153,6 +152,21 @@ public class LocationRecall extends AppCompatActivity {
         // return to main activity
         MainActivity.setLocationBoolean();
         this.finish();
+    }
+
+    // get latitude/longitude
+    public static LatLng getLatLng() {
+        return latLng;
+    }
+
+    // get address
+    public static String getLocationString() {
+        return address;
+    }
+
+    public void goToMaps( View v ) {
+        Intent myIntent = new Intent(this, MapsActivity.class);
+        this.startActivity(myIntent);
     }
 
     // return to main screen
