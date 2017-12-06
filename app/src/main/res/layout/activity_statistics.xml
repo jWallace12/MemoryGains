@@ -5,38 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/red"
     tools:layout_editor_absoluteY="81dp">
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="207dp"
-        android:layout_height="318dp"
-        android:layout_marginBottom="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
-        android:contentDescription="@string/visual"
-        app:layout_constraintBottom_toTopOf="@+id/phraseView"
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart1"
+        android:layout_width="0dp"
+        android:layout_height="202dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/graph"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/locationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/locSuccess"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        android:layout_marginTop="8dp"
+        android:text="Location Recall Success: "
+        app:layout_constraintStart_toStartOf="@+id/phraseView"
         app:layout_constraintTop_toBottomOf="@+id/phraseView"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -46,92 +35,78 @@
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="32dp"
         android:onClick="goBack"
-        android:text="@string/main"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/overallView" />
+        android:text="Main Page"
+        app:layout_constraintEnd_toEndOf="@+id/locationView"
+        app:layout_constraintTop_toBottomOf="@+id/locationView" />
 
     <TextView
         android:id="@+id/phraseView"
-        android:layout_width="149dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/phrSuccess"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/locationView"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        android:layout_marginTop="7dp"
+        android:text="Phrase Recall Success: "
+        app:layout_constraintEnd_toEndOf="@+id/overallView"
+        app:layout_constraintStart_toStartOf="@+id/imagesView"
+        app:layout_constraintTop_toBottomOf="@+id/imagesView" />
 
     <TextView
         android:id="@+id/overallView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="174dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/overallSuccess"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        android:layout_marginEnd="59dp"
+        android:layout_marginTop="60dp"
+        android:text="Overall Recall Success: "
+        app:layout_constraintEnd_toStartOf="@+id/overallStats"
+        app:layout_constraintTop_toBottomOf="@+id/chart1" />
 
     <TextView
         android:id="@+id/locationStats"
-        android:layout_width="8dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginTop="8dp"
         android:text=""
-        app:layout_constraintStart_toEndOf="@+id/locationView"
-        app:layout_constraintTop_toTopOf="@+id/locationView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phraseStats" />
 
     <TextView
         android:id="@+id/phraseStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="7dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/phraseView"
         app:layout_constraintEnd_toStartOf="@+id/locationStats"
-        app:layout_constraintStart_toEndOf="@+id/locationStats"
-        app:layout_constraintTop_toTopOf="@+id/phraseView" />
+        app:layout_constraintStart_toStartOf="@+id/locationStats"
+        app:layout_constraintTop_toBottomOf="@+id/imageStats" />
 
     <TextView
         android:id="@+id/overallStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="59dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/overallView"
-        app:layout_constraintStart_toEndOf="@+id/overallView"
+        app:layout_constraintEnd_toStartOf="@+id/imageStats"
+        app:layout_constraintStart_toStartOf="@+id/imageStats"
         app:layout_constraintTop_toTopOf="@+id/overallView" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/imagesView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/imgSuccess"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/overallView"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/locationView" />
+        android:layout_marginTop="8dp"
+        android:text="Image Recall Success:"
+        app:layout_constraintStart_toStartOf="@+id/overallView"
+        app:layout_constraintTop_toBottomOf="@+id/overallView" />
 
     <TextView
         android:id="@+id/imageStats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="@+id/overallStats"
-        app:layout_constraintTop_toTopOf="@+id/textView10" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/phraseStats"
+        app:layout_constraintStart_toStartOf="@+id/phraseStats"
+        app:layout_constraintTop_toBottomOf="@+id/overallStats" />
 </android.support.constraint.ConstraintLayout>

@@ -49,8 +49,8 @@ public class LocationRecall extends AppCompatActivity {
         address = getAddress();
         time = getTime();
         date = getDate();
-        TextView addressView = findViewById(R.id.latLong);
-        TextView timeView = findViewById(R.id.currTime);
+        TextView addressView = (TextView)findViewById(R.id.latLong);
+        TextView timeView = (TextView)findViewById(R.id.currTime);
         addressView.setText(address);
         timeView.setText(time);
     }

@@ -9,6 +9,7 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -29,11 +30,15 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.android.gms:play-services:11.6.2'
     compile 'com.google.android.gms:play-services-location:11.6.2'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
     testCompile 'junit:junit:4.12'
 }
 
 repositories {
     maven {
         url "https://maven.google.com"
+    }
+    maven {
+        url "https://jitpack.io"
     }
 }

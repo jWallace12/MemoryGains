@@ -29,9 +29,9 @@ public class Settings extends AppCompatActivity {
 
         // get the saved values for the timers and write them to the screen
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        newPhraseTime = findViewById(R.id.newPhraseTime);
-        newLocationTime = findViewById(R.id.newLocationTime);
-        newImageTime = findViewById(R.id.newImageTime);
+        newPhraseTime = (EditText)findViewById(R.id.newPhraseTime);
+        newLocationTime = (EditText)findViewById(R.id.newLocationTime);
+        newImageTime = (EditText)findViewById(R.id.newImageTime);
         newPhraseTime.setText(Integer.toString(sharedPreferences.getInt("newPhraseTime", 12)));
         newLocationTime.setText(Integer.toString(sharedPreferences.getInt("newLocationTime", 12)));
         newImageTime.setText(Integer.toString(sharedPreferences.getInt("newImageTime", 12)));

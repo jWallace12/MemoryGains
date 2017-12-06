@@ -57,8 +57,8 @@ public class ImageRecall extends AppCompatActivity{
 
         // change button visibility
         View makeGuess = findViewById(R.id.btn_make_guess);
-        Button guessCorrect = findViewById(R.id.btn_guess_correct);
-        Button guessIncorrect = findViewById(R.id.btn_guess_incorrect);
+        Button guessCorrect = (Button)findViewById(R.id.btn_guess_correct);
+        Button guessIncorrect = (Button) findViewById(R.id.btn_guess_incorrect);
 
 
         makeGuess.setVisibility(View.GONE);
