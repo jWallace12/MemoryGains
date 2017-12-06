@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/orange"
     tools:layout_editor_absoluteY="89dp">
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_marginBottom="133dp"
         android:layout_marginTop="41dp"
         android:text="@string/guessLocation"
+        android:textColor="@color/black"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/locationGuessMessage"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -58,6 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="71dp"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button6"
         app:layout_constraintHorizontal_bias="0.499"

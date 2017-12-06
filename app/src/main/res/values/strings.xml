@@ -12,14 +12,13 @@
     <string name="statsButton">My Statistics</string>
     <string name="settingsButton">Settings</string>
 
-    <!--Phrase recall-->
+    <!--Phrase Recall-->
     <string name="phraseTitleText">Phrase Recall</string>
     <string name="directions">Remember this phrase. At random, you will receive a notification,
             prompting you to enter the phrase.</string>
     <string name="accept">Accept Phrase</string>
+    <string name="acceptLoc">Accept Location</string>
     <string name="newPhrs">New Phrase</string>
-
-    <!--Phrase Guess-->
     <string name="phraseGuess">Guess That Phrase!</string>
 
     <!--Settings-->
@@ -32,15 +31,38 @@
     <string name="enabGPS">Enable GPS Tracking</string>
     <string name="mainPage">Main Page</string>
     <string name="title_activity_maps">Map</string>
+    <string name="phraseTimer">Phrase Timer</string>
+    <string name="locationTimer">Location Timer</string>
+    <string name="imageTimer">Image Timer</string>
+    <string name="timers">Timers</string>
 
     <!--Location Guess-->
     <string name="locationRecall">Location Recall</string>
+    <string name="locationRecallMessage">Below is your current location and time. Remember this address</string>
     <string name="guessLocation">Guess That Location!</string>
+    <string name="maps">Show in Map</string>
+    <string name="acceptLocation">Accept Location</string>
+
+    <!--Statistics-->
+    <string name="phrSuccess">Phrase Recall Success</string>
+    <string name="locSuccess">Location Recall Success</string>
+    <string name="imgSuccess">Image Recall Success</string>
+    <string name="overallSuccess">Overall Success</string>
 
     <!--Various-->
     <string name="guess">Guess!</string>
     <string name="cancel">Cancel</string>
     <string name="hint">Hint</string>
     <string name="main">Main Page</string>
+    <string name="userPhoto">Photo user has taken to recall</string>
+    <string name="visual">Visual Representation of Data</string>
+
+    <!--Image Guess-->
+    <string name="imageGuess">OK. I am ready to make a guess!</string>
+    <string name="phrRecallGreeting">Think back hard... What was your given phrase?</string>
+    <string name="takePicture">Take a picture!</string>
+    <string name="savePicture">Save picture!</string>
+    <string name="photoCorrect">I Was Correct!</string>
+    <string name="photoIncorrect">I Was Incorrect!</string>
 
 </resources>

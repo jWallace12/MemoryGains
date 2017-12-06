@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@color/orange">
 
     <ImageView
         android:id="@+id/imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/button_image"/>
+        android:contentDescription="@string/userPhoto" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -25,35 +25,34 @@
             android:layout_height="wrap_content"
             android:id="@+id/photoDescription"
             android:gravity="center"
-            android:layout_centerHorizontal="true"
             android:text="" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/btn_make_guess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:onClick="makeGuess"
-                android:text="OK. I am ready to make a guess!" />
+                android:text="@string/imageGuess" />
+
             <Button
                 android:id="@+id/btn_guess_correct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:onClick="guessCorrect"
-                android:text="I Was Correct!"
+                android:text="@string/photoCorrect"
                 android:visibility="gone" />
+
             <Button
                 android:id="@+id/btn_guess_incorrect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:onClick="guessIncorrect"
-                android:text="I Was Incorrect!"
+                android:text="@string/photoIncorrect"
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
