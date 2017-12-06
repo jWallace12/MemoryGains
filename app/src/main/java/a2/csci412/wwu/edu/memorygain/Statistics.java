@@ -40,7 +40,7 @@ public class Statistics extends AppCompatActivity{
         chart = (BarChart) findViewById(R.id.chart1);
         BARENTRY = new ArrayList<>();
         BarEntryLabels = new ArrayList<String>();
-        Bardataset = new BarDataSet(BARENTRY, "Projects");
+        Bardataset = new BarDataSet(BARENTRY, "Location, Phrase, Image, Overall");
         BARDATA = new BarData(BarEntryLabels, Bardataset);
         updateView();
     }
