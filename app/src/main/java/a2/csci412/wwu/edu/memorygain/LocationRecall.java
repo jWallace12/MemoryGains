@@ -14,6 +14,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -53,6 +54,8 @@ public class LocationRecall extends AppCompatActivity {
         TextView timeView = (TextView)findViewById(R.id.currTime);
         addressView.setText(address);
         timeView.setText(time);
+        Button button = (Button) findViewById(R.id.mapButton);
+        button.setText("Show in Map");
     }
 
     // return current GPS coordinates

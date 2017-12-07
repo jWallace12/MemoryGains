@@ -40,7 +40,7 @@
     <string name="locationRecall">Location Recall</string>
     <string name="locationRecallMessage">Below is your current location and time. Remember this address</string>
     <string name="guessLocation">Guess That Location!</string>
-    <string name="maps">Show in Map</string>
+    <string name="maps">Map</string>
     <string name="acceptLocation">Accept Location</string>
 
     <!--Statistics-->

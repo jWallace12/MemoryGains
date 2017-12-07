@@ -23,6 +23,7 @@ public class Statistics extends AppCompatActivity{
     DatabaseManager dbManager;          // database instance
     private static DecimalFormat df2;   // double formatter
 
+
     //Graph stuff
     BarChart chart ;
     ArrayList<BarEntry> BARENTRY ;
@@ -33,20 +34,23 @@ public class Statistics extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         dbManager = new DatabaseManager(this);
         df2 = new DecimalFormat(".##");
         setContentView(R.layout.activity_statistics);
-        //Bar graph
+
         chart = (BarChart) findViewById(R.id.chart1);
         BARENTRY = new ArrayList<>();
         BarEntryLabels = new ArrayList<String>();
-        Bardataset = new BarDataSet(BARENTRY, "Location, Phrase, Image, Overall");
+        Bardataset = new BarDataSet(BARENTRY, "Phrase, Location, Image, Overall");
         BARDATA = new BarData(BarEntryLabels, Bardataset);
+
+        //Bar graph
         updateView();
     }
 
     // update statistics
-    public void updateView( ) {
+    public void updateView() {
 
         // find all views by their ids
         TextView phraseText = ( TextView ) findViewById(R.id.phraseStats);
@@ -87,51 +91,58 @@ public class Statistics extends AppCompatActivity{
             }
         }
 
-        //Labels for the chart
-        BarEntryLabels.add("Location");
-        BarEntryLabels.add("Phrase");
-        BarEntryLabels.add("Image");
-        BarEntryLabels.add("Overall");
+        // calculate the percentages, and write them to their TextViews
+        double phrasePercentage = (phraseSuccess / phraseRecalls.size());
+        double locationPercentage = (locationSuccess / locationRecalls.size());
+        double imagePercentage = (imageSuccess / imageRecalls.size());
+        double allRecalls = locationRecalls.size() + phraseRecalls.size() + imageRecalls.size();
+        double overallStats = (overallSuccess / allRecalls);
 
-        BARENTRY.add(new BarEntry(phraseSuccess, 0));
-        BARENTRY.add(new BarEntry(locationSuccess, 1));
-        BARENTRY.add(new BarEntry(imageSuccess, 2));
-        BARENTRY.add(new BarEntry(overallSuccess, 3));
 
         Bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         chart.setData(BARDATA);
         chart.animateY(3000);
 
-        // calculate the percentages, and write them to their TextViews
-        double phrasePercentage = (phraseSuccess / phraseRecalls.size());
-        double locationPercentage = (locationSuccess / locationRecalls.size());
-        double imagePercentage = (imageSuccess / locationRecalls.size());
-        double allRecalls = locationRecalls.size() + phraseRecalls.size();
 
         if (Double.isNaN(phrasePercentage)) {
             phraseText.setText("No entries");
+            BARENTRY.add(new BarEntry(0, 0));
+            BarEntryLabels.add("");
         } else {
-            phraseText.setText((phrasePercentage * 100) + "%");
+            phraseText.setText(df2.format(phrasePercentage * 100) + "%");
+            BARENTRY.add(new BarEntry((float) phrasePercentage, 0));
+            BarEntryLabels.add("Phrase");
         }
 
         if (Double.isNaN(locationPercentage)) {
             locationText.setText("No entries");
+            BARENTRY.add(new BarEntry(0, 1));
+            BarEntryLabels.add("");
         } else {
-            locationText.setText((locationPercentage * 100) + "%");
+            locationText.setText(df2.format(locationPercentage * 100) + "%");
+            BARENTRY.add(new BarEntry((float) locationPercentage, 1));
+            BarEntryLabels.add("Location");
         }
 
 
         if (Double.isNaN(imagePercentage)) {
             imageText.setText("No entries");
+            BARENTRY.add(new BarEntry(0, 2));
+            BarEntryLabels.add("");
         } else {
-            imageText.setText((imagePercentage * 100) + "%");
+            imageText.setText(df2.format(imagePercentage * 100) + "%");
+            BARENTRY.add(new BarEntry((float) imagePercentage, 2));
+            BarEntryLabels.add("Image");
         }
 
-        double overallStats = (overallSuccess / allRecalls) * 100;
         if (Double.isNaN(overallStats)) {
             overallText.setText("No entries");
+            BARENTRY.add(new BarEntry(0, 3));
+            BarEntryLabels.add("");
         } else {
-            overallText.setText(df2.format(overallStats) + "%");
+            overallText.setText(df2.format(overallStats * 100) + "%");
+            BARENTRY.add(new BarEntry((float) overallStats, 3));
+            BarEntryLabels.add("Overall");
         }
     }
 

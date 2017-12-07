@@ -37,9 +37,9 @@ public class PhraseRecall extends AppCompatActivity{
                 "You don't even know the half of it", "I forgive you", "Everything will be just fine", "Take my hand",
                 "Run as fast as you can", "I believe in you", "Don't worry about it", "I knew that", "It's the end of the world",
                 "Dont be afraid", "Never say never", "It's a diamond in the rough", "You're one in a million", "The odds are against us",
-                "It's never enough", "Knock on wood", "It's no big deal", "The rain in Spain fails on the train", "I know you are but what am I?",
-                "It's us versus the world", "You know better than that", "There is nothing to fear but fear itself", "One man's trash is another man's treasure",
-                "I don't know how much more my heart can take", "I'm so weak inside", "Blood runs thicker than water", "I can do whatever I want"};
+                "It's never enough", "Knock on wood", "It's no big deal", "The rain in Spain falls on the train", "I know you are but what am I",
+                "It's us versus the world", "You know better than that", "There is nothing to fear but fear itself", "One man's trash is another mans treasure",
+                "I don't know how much more my heart can take", "I'm so weak inside", "Blood runs thicker than water", "I can do whatever I want", "The things I do for love"};
     }
 
 
