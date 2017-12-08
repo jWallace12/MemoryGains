@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private static SharedPreferences sharedPreferences;
@@ -123,8 +125,18 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, PhraseAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() +
-                sharedPreferences.getInt("newPhraseTime", 12) * 3600000, pendingIntent);
+        Date currentTime = Calendar.getInstance().getTime();
+        String[] splitter = currentTime.toString().split(" ");
+        String justTime = splitter[3];
+        splitter = justTime.split(":");
+        String hour = splitter[0];
+        String minutes = splitter[1];
+        String seconds = splitter[2];
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(minutes) + sharedPreferences.getInt("newPhraseTime", 12));
+        calendar.set(Calendar.SECOND, Integer.parseInt(seconds));
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
     }
 
     // set up timer for notification for location
@@ -132,8 +144,18 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, LocationAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() +
-                sharedPreferences.getInt("newLocationTime", 12) * 3600000, pendingIntent);
+        Date currentTime = Calendar.getInstance().getTime();
+        String[] splitter = currentTime.toString().split(" ");
+        String justTime = splitter[3];
+        splitter = justTime.split(":");
+        String hour = splitter[0];
+        String minutes = splitter[1];
+        String seconds = splitter[2];
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(minutes) + sharedPreferences.getInt("newLocationTime", 12));
+        calendar.set(Calendar.SECOND, Integer.parseInt(seconds));
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
     }
 
     // set up timer notification for image
@@ -141,8 +163,18 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(MainActivity.this, ImageAlarmNotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() +
-                sharedPreferences.getInt("newImageTime", 12) * 3600000, pendingIntent);
+        Date currentTime = Calendar.getInstance().getTime();
+        String[] splitter = currentTime.toString().split(" ");
+        String justTime = splitter[3];
+        splitter = justTime.split(":");
+        String hour = splitter[0];
+        String minutes = splitter[1];
+        String seconds = splitter[2];
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(minutes) + sharedPreferences.getInt("newImageTime", 12));
+        calendar.set(Calendar.SECOND, Integer.parseInt(seconds));
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
     }
 
     public static void setPhraseBoolean() { phraseTimer = true; }

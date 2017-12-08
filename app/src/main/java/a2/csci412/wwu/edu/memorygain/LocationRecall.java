@@ -111,7 +111,10 @@ public class LocationRecall extends AppCompatActivity {
             // find if the time is AM or PM
             if (hourInt < 12) {
                 amOrPm = true;
-            } else {
+            } else if (hourInt == 12) {
+                amOrPm = false;
+            }
+            else  {
                 amOrPm = false;
                 hourInt -= 12;
             }

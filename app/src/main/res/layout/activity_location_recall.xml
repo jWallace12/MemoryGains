@@ -1,116 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/yellow"
+    android:orientation="vertical"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="89dp">
 
-    <TextView
-        android:id="@+id/textView4"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="98dp"
-        android:layout_marginTop="51dp"
-        android:text="@string/locationRecall"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="330dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="89dp"
-        android:layout_marginTop="198dp"
-        android:text="@string/locationRecallMessage"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/currTime"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/locationRecall"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="47dp" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="140dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="acceptLocation"
-        android:text="@string/acceptLoc"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapButton"
-        app:layout_constraintVertical_bias="0.714"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="140dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="121dp"
-        android:onClick="goBack"
-        android:text="@string/main"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
-
-    <TextView
-        android:id="@+id/latLong"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="49dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/mapButton"
-        app:layout_constraintEnd_toStartOf="@+id/mapButton"
-        app:layout_constraintStart_toStartOf="@+id/textView5" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/currTime"
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="330dp"
+            android:layout_height="58dp"
+            android:text="@string/locationRecallMessage"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="187dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/latLong"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/mapButton"
-        app:layout_constraintTop_toTopOf="@+id/latLong" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_margin="10sp">
 
-    <Button
-        android:id="@+id/mapButton"
-        android:layout_width="140dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="180dp"
-        android:onClick="goToMaps"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:text="@string/maps" />
+        <TextView
+            android:id="@+id/latLong"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />"
+            android:text="@string/hint"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="328dp" />
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="50sp">
+
+        <TextView
+            android:id="@+id/currTime"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="422dp"
+            tools:layout_editor_absoluteY="325dp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:onClick="acceptLocation"
+            android:text="@string/acceptLoc"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_editor_absoluteX="230dp"
+            tools:layout_editor_absoluteY="546dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mapButton"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:onClick="goToMaps"
+            tools:layout_editor_absoluteX="230dp"
+            tools:layout_editor_absoluteY="404dp"
+            tools:text="@string/maps" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:onClick="goBack"
+            android:text="@string/main"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_editor_absoluteX="231dp"
+            tools:layout_editor_absoluteY="645dp" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

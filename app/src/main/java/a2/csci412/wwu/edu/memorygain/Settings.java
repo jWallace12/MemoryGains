@@ -86,11 +86,6 @@ public class Settings extends AppCompatActivity {
         ((Switch) findViewById(R.id.locationSwitch)).setOnCheckedChangeListener(multiListener);
     }
 
-    public void clearCache( View v) {
-        Log.w("clear", "cache");
-        //clear cache
-    }
-
     // return timers to default time and delete all data
     public void reset( View v) {
         Log.w("reset", "reset");
